@@ -1,0 +1,9 @@
+.li {
+  padding: 8px;
+}
+
+/* Target the last 3 children (excluding the first) */
+.navList li:nth-child(n + 2) {
+
+  cursor: not-allowed;
+}
