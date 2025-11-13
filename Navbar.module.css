@@ -1,8 +1,33 @@
+.nav {
+  height: 80px;
+  margin: 0 80px;
+}
+
 .li {
   padding: 8px;
 }
 
-/* Target the last 3 children (excluding the first) */
+.nav__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1070px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.nav__logo__wrapper {
+  max-width: 200px;
+  min-width: 200px;
+}
+
+.nav__logo {
+  width: 100%;
+  height: 100%;
+}
+
 .navList li:nth-child(n + 2) {
 
   cursor: not-allowed;

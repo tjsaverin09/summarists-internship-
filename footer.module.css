@@ -1,0 +1,33 @@
+.footer {
+    background-color: #f1f6f4;
+}
+
+.container {
+    padding: 40px 0;
+    width: 100%;
+}
+
+.row {
+    max-width: 1070px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.footerTopWrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footerLinkTitle {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.footerCopyrightWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+}
+
