@@ -1,6 +1,6 @@
 .nav {
   height: 80px;
-  margin: 0 80px;
+  margin: 0 80px
 }
 
 .li {
@@ -11,16 +11,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1070px;
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  padding: 0 24px;
+  
 }
+
 
 .nav__logo__wrapper {
   max-width: 200px;
-  min-width: 200px;
 }
 
 .nav__logo {
@@ -28,7 +24,16 @@
   height: 100%;
 }
 
+/* Target the last 3 children (excluding the first) */
 .navList li:nth-child(n + 2) {
 
   cursor: not-allowed;
+}
+
+.navList li:first-child {
+  transition: color 0.3s ease;
+}
+
+.navList li:first-child:hover {
+  color: #2bd97c;
 }

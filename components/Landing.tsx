@@ -1,24 +1,23 @@
 import Image from "next/image";
 import LandingImg from "../public/landing.png";
-import styles from "../landing.module.css"
+import styles from "../landing.module.css";
 
 export default function Landing() {
   return (
-    <section id="landing">
       <div className="container">
         <div className="row">
           <div className={styles.landingWrapper}>
-            <div className="landingIntro">
-              <h1 className="landingHeader">
-                Gain more knowledge in less time
+            <div className={styles.landingIntro}>
+              <h1 className={styles.landingHeader}>
+                Gain more knowledge <br/> in less time
               </h1>
-              <div className="landingPara">
-                Great summaries for busy people, individuals who barely have
-                time to read, and even people who don't like to read.
+              <div className={styles.landingPara}>
+                Great summaries for busy people, <br/> individuals who barely have
+                time to read, <br/> and even people who don't like to read.
               </div>
-              <button className="landingBtn">Login</button>
+              <button className={styles.landingBtn}>Login</button>
             </div>
-            <div className="landingImg">
+            <div className={styles.landingImgWrapper}>
               <Image
                 src={LandingImg}
                 alt="Landing Illustration"
@@ -29,6 +28,5 @@ export default function Landing() {
           </div>
         </div>
       </div>
-    </section>
   );
 }

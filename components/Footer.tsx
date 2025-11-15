@@ -5,7 +5,7 @@ function Footer() {
   return (
     <div className={styles.footer}>
       <div className={styles.container}>
-        <div className={styles.row}>
+        <div className="row">
             <div className={styles.footerTopWrapper}>
                 <div className="footer__block">
                     <div className={styles.footerLinkTitle}>
