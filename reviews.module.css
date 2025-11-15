@@ -6,6 +6,19 @@ display: flex;
   margin-bottom: 12px;
 }
 
+.reviewWrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.review {
+  background-color: #fff3d7;
+  padding: 16px;
+  margin-bottom: 32px;
+  border-radius: 4px;
+  font-weight: 300;
+}
+
 .reviewDetails {
     display: flex;
     align-items: center;

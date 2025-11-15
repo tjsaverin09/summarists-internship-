@@ -7,8 +7,8 @@ export default function Reviews() {
       <div className="container">
         <div className="row">
           <div className={styles.reviewHeader}>What our members say</div>
-          <div className="reviewWrapper">
-            <div className="review">
+          <div className={styles.reviewWrapper}>
+            <div className={styles.review}>
               <div className={styles.reviewDetails}>
                 <div className="reviewer">Hanna M.</div>
                 <div className={styles.rating}>
@@ -19,13 +19,13 @@ export default function Reviews() {
                   <FaStar />
                 </div>
               </div>
-              <div className="review">
+              <div className={styles.review}>
                 This app has been a game-changer for me! It's saved me so much
                 time and effort in reading and comprehending books. Highly
                 recommend it to all book lovers
               </div>
             </div>
-            <div className="review">
+            <div className={styles.review}>
               <div className={styles.reviewDetails}>
                 <div className="reviewer">David B.</div>
                 <div className={styles.rating}>
@@ -36,13 +36,13 @@ export default function Reviews() {
                   <FaStar />
                 </div>
               </div>
-              <div className="review">
+              <div className={styles.review}>
                 I love this app! It provides concise and accurate summaries of
                 books in a way that is easy to understand. It's also very
                 user-friendly and intuitive.
               </div>
             </div>
-            <div className="review">
+            <div className={styles.review}>
               <div className={styles.reviewDetails}>
                 <div className="reviewer">Nathan S.</div>
                 <div className={styles.rating}>
