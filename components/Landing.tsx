@@ -15,7 +15,7 @@ export default function Landing() {
                 Great summaries for busy people, <br/> individuals who barely have
                 time to read, <br/> and even people who don't like to read.
               </div>
-              <button className={styles.landingBtn}>Login</button>
+              <button className={`btn ${styles.landingBtn}`}>Login</button>
             </div>
             <div className={styles.landingImgWrapper}>
               <Image

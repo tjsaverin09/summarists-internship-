@@ -8,7 +8,7 @@ export default function Features() {
     <section id="features">
       <div className="container">
         <div className="row">
-          <div className={styles.featuresHeader}>
+          <div className="sectionHeader">
             Understand books in few a minutes
           </div>
           <div className={styles.featuresWrapper}>

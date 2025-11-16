@@ -29,3 +29,11 @@ display: flex;
     display: flex;
     color: #0365f2;
 }
+
+.reviewBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 300px;
+}

@@ -6,7 +6,7 @@ export default function Reviews() {
     <section id="reviews">
       <div className="container">
         <div className="row">
-          <div className={styles.reviewHeader}>What our members say</div>
+          <div className="sectionHeader">What our members say</div>
           <div className={styles.reviewWrapper}>
             <div className={styles.review}>
               <div className={styles.reviewDetails}>
@@ -59,7 +59,7 @@ export default function Reviews() {
                 well-written and informative. Definitely worth downloading
               </div>
             </div>
-            <div className="review">
+            <div className={styles.review}>
               <div className={styles.reviewDetails}>
                 <div className="reviewer">Ryan R.</div>
                 <div className={styles.rating}>
@@ -78,6 +78,9 @@ export default function Reviews() {
               </div>
             </div>
           </div>
+          <button className={`btn ${styles.reviewBtn}`}>
+            Login
+          </button>
         </div>
       </div>
     </section>
