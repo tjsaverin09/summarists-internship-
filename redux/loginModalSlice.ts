@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface LoginModalState {
-  isOpen: boolean
+  isOpen: boolean,
 }
 
 const initialState: LoginModalState = {
-  isOpen: false
+  isOpen: false,
 }
 
 export const loginModalSlice = createSlice({

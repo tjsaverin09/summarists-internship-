@@ -32,6 +32,7 @@
 
 .navList li:first-child {
   transition: color 0.3s ease;
+  cursor: pointer;
 }
 
 .navList li:first-child:hover {

@@ -1,7 +1,16 @@
+'use client'
+
 import Link from "next/link";
 import styles from "../Navbar.module.css";
+import { useSelector } from "../redux/typedHooks";
+import { useDispatch } from "react-redux";
+import { openModal } from "@/redux/loginModalSlice";
 
 function Navbar() {
+
+  const loginModal = useSelector(state => state.loginModal.isOpen)
+  const dispatch = useDispatch()
+
   return (
     <>
       <nav className={styles.nav}>
@@ -11,9 +20,9 @@ function Navbar() {
             </figure>
              
           <ul className={`flex m-8 ${styles.navList}`}>
-            <Link href={""}>
+            <button onClick={() => dispatch(openModal())}>
               <li className={styles.li}>Login</li>
-            </Link>
+            </button>
 
             <li className={styles.li}>About</li>
 

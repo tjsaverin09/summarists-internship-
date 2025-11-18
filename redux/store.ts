@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import loginModalSlice from "../redux/loginModalslice"
+import loginModalSlice from "../redux/loginModalSlice"
 
 export const store = configureStore({
   reducer: {
