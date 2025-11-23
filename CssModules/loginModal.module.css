@@ -18,7 +18,6 @@
     max-width: 400px;
     width: 90%;
     max-height: 90vh;
-    overflow-y: auto;
 }
 
 .modalTitle {
@@ -43,6 +42,10 @@
 
 .modalGuestBtn {
     background-color: #3A579D;
+}
+
+.modalGuestBtn:hover {
+    background-color: #3a589d53
 }
 
 .modalGoogleBtn {
@@ -77,4 +80,23 @@
     border-radius: 4px;
     color: #394547;
     padding: 0 12px;
+}
+
+.forgotPassword {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4285F4;
+    font-size: 14px;
+}
+
+.newAccountBtn {
+    height: 40px;
+    text-align: center;
+    background-color: #f1f6f4;
+    color: #116be9;
+    width: 100%;
+    border-radius: 0 0 4px 4px;
+    font-weight: 300;
+    font-size: 16px;
 }

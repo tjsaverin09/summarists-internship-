@@ -1,7 +1,14 @@
+'use client'
+
 import { FaStar } from "react-icons/fa";
-import styles from "../reviews.module.css";
+import styles from "../CssModules/reviews.module.css";
+import { useDispatch } from "react-redux";
+import { openModal } from "@/redux/loginModalSlice";
 
 export default function Reviews() {
+
+  const dispatch = useDispatch();
+
   return (
     <section id="reviews">
       <div className="container">
@@ -78,7 +85,7 @@ export default function Reviews() {
               </div>
             </div>
           </div>
-          <button className={`btn ${styles.reviewBtn}`}>
+          <button className={`btn ${styles.reviewBtn}`} onClick={() => dispatch(openModal())}>
             Login
           </button>
         </div>

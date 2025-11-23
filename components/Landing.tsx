@@ -1,8 +1,16 @@
+'use client'
+
 import Image from "next/image";
 import LandingImg from "../public/landing.png";
-import styles from "../landing.module.css";
+import { useDispatch } from "react-redux";
+import { openModal } from "@/redux/loginModalSlice";
+import styles from "../CssModules/landing.module.css";
 
 export default function Landing() {
+
+  
+  const dispatch = useDispatch()
+
   return (
       <div className="container">
         <div className="row">
@@ -15,7 +23,7 @@ export default function Landing() {
                 Great summaries for busy people, <br/> individuals who barely have
                 time to read, <br/> and even people who don't like to read.
               </div>
-              <button className={`btn ${styles.landingBtn}`}>Login</button>
+              <button className={`btn ${styles.landingBtn}`} onClick={() => dispatch(openModal())}>Login</button>
             </div>
             <div className={styles.landingImgWrapper}>
               <Image

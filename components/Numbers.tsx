@@ -1,7 +1,7 @@
 import { BiCrown } from "react-icons/bi";
 import { BsStarFill, BsStarHalf} from "react-icons/bs";
 import { RiLeafLine } from "react-icons/ri";
-import styles from '../numbers.module.css'
+import styles from '../CssModules/numbers.module.css'
 
 export default function Numbers() {
     return (
