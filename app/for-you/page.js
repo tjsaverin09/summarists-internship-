@@ -1,10 +1,9 @@
-import SearchBar from "@/components/SearchBar"
+import Searchbar from "@/components/Searchbar"
 
 export default function forYou() {
     return (
         <>
-            Hi Mom!
-            <SearchBar />
+            <Searchbar />
         </>
     )
 }
