@@ -1,0 +1,62 @@
+.selectedBookWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: calc((100% / 3) * 2);
+    border-radius: 4px;
+    background-color:#fbefd6;
+    padding: 24px;
+    margin-bottom: 24px;
+    gap: 24px;
+}
+
+.selectedBookContent {
+    display: flex;
+    gap: 16px;
+}
+
+.selectedBookDesc {
+    width: 40%;
+}
+
+.selectedBooksDivider {
+    width: 1px;
+    background-color: #bac8ce;
+}
+
+.selectedBook {
+    display: flex;
+}
+
+.selectedBookCoverWrapper {
+    height: 140px;
+    width: 140px;
+    min-width: 140px;
+}
+
+.selectedBookCover {
+    width: 100%;
+    height: 100%;
+}
+
+.selectedBookDetails {
+    display: flex;
+    flex-direction: column;
+}
+
+.selectedBookName {
+    font-weight: 600;
+    color: #032b41;
+    margin-bottom: 8px;
+}
+
+.selectedBookAuthor {
+    font-size: 14px;
+    color: #394547;
+    margin-bottom: 16px;
+}
+
+.selectedBookAudioPlayer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

@@ -1,0 +1,39 @@
+.sidebar {
+  background-color: #f7faf9;
+  width: 200px;
+  min-width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 1000;
+  transition: all .3s;
+}
+
+.sidebarLogoWrapper {
+    max-width: 200px;
+    padding: 16px;
+}
+
+.sidebarLogo {
+    width: 100%;
+    height: 100%;
+}
+
+.sidebarContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebarOption {
+    display: flex;
+    align-items: center;
+    margin: 24px;
+    gap: 8px;
+}
+
+.optionIcon {
+    font-size: 24px;
+}

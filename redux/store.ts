@@ -1,13 +1,32 @@
-import { configureStore } from '@reduxjs/toolkit'
-import loginModalSlice from "../redux/loginModalSlice"
+import { configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
+import { createLogger } from "redux-logger";
+import loginModalSlice from "../redux/loginModalSlice";
+import { selectedBookApi } from "./selectedBookApiSlice";
+import { recBooksApi } from "./recBooksApiSlice";
+
+const logger = createLogger({
+  collapsed: true,
+  diff: true,
+});
 
 export const store = configureStore({
   reducer: {
-    loginModal: loginModalSlice
+    loginModal: loginModalSlice,
+    [selectedBookApi.reducerPath]: selectedBookApi.reducer,
+    [recBooksApi.reducerPath]: recBooksApi.reducer,
   },
-})
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ["persist/PERSIST"],
+      },
+    }).concat(selectedBookApi.middleware, recBooksApi.middleware, logger),
+});
+
+setupListeners(store.dispatch);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = typeof store.dispatch;
