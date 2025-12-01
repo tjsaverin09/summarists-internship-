@@ -30,8 +30,13 @@
 .sidebarOption {
     display: flex;
     align-items: center;
-    margin: 24px;
+    padding: 24px;
     gap: 8px;
+    width: 100%;
+}
+
+.sidebarOption:hover {
+    background-color: #f0efef;
 }
 
 .optionIcon {

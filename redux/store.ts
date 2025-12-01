@@ -4,6 +4,8 @@ import { createLogger } from "redux-logger";
 import loginModalSlice from "../redux/loginModalSlice";
 import { selectedBookApi } from "./selectedBookApiSlice";
 import { recBooksApi } from "./recBooksApiSlice";
+import { sugBooksApi } from "./sugBooksApiSlice";
+
 
 const logger = createLogger({
   collapsed: true,
@@ -15,13 +17,14 @@ export const store = configureStore({
     loginModal: loginModalSlice,
     [selectedBookApi.reducerPath]: selectedBookApi.reducer,
     [recBooksApi.reducerPath]: recBooksApi.reducer,
+    [sugBooksApi.reducerPath]: sugBooksApi.reducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: ["persist/PERSIST"],
       },
-    }).concat(selectedBookApi.middleware, recBooksApi.middleware, logger),
+    }).concat(selectedBookApi.middleware, recBooksApi.middleware, sugBooksApi.middleware, logger),
 });
 
 setupListeners(store.dispatch);

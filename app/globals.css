@@ -64,7 +64,41 @@
 }
 /*
 
-Sidebar
+For-you
 
 */
+
+.bookList {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.book {
+    padding: 32px 12px 12px;
+    border-radius: 4px;
+    max-width: 200px;
+    width: 100%;
+}
+
+.book:hover {
+  background-color: #f1f6f4;
+}
+
+.bookName {
+  font-weight: 600;
+  font-weight: 16px;
+  color: #032b41;
+  margin-bottom: 8px;
+}
+
+.bookAuthor {
+  font-size: 14px;
+  color: #6b757b;
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+
+
 

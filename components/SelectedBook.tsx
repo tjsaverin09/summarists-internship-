@@ -2,6 +2,7 @@
 
 import styles from "@/CssModules/selectedBooks.module.css"
 import { useGetSingleBookQuery } from "@/redux/selectedBookApiSlice";
+import Link from "next/link";
 import { FaCirclePlay } from "react-icons/fa6";
 
 export default function SelectedBooks() {
@@ -11,6 +12,7 @@ export default function SelectedBooks() {
      if (error) return <div>Error loading book</div>;
 
     return (
+      <Link href={`book/${book.id}`}>
         <div className={styles.selectedBookWrapper}>
             <div className={styles.selectedBookContent}>
               <div className={styles.selectedBookDesc}>
@@ -38,5 +40,6 @@ export default function SelectedBooks() {
               </div>
             </div>
           </div>
+          </Link>
     )
 }
