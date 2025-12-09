@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { useGetBookByIdQuery } from "@/redux/selectedBookApiSlice";
+import axios from 'axios';
 
 interface Book {
   id: string;
@@ -17,53 +17,56 @@ export default function BookPage() {
   const params = useParams();
   const [bookId, setBookId] = useState<string | null>(null);
   const [book, setBook] = useState<Book | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
-  // Extract book ID from params
+  console.log(book)
+
   useEffect(() => {
-    if (params?.id) {
+    if(params?.id) {
       const id = Array.isArray(params.id) ? params.id[0] : params.id;
       setBookId(id);
-      console.log("Book ID from URL:", id);
     }
   }, [params]);
 
-  // Fetch book data using RTK Query
-  const {
-    data: bookData,
-    isLoading,
-    error,
-  } = useGetBookByIdQuery(bookId!, {
-    skip: !bookId, // Skip query if no bookId
-  });
-
-  // Update local state when book data changes
   useEffect(() => {
-    if (bookData) {
-      setBook(bookData);
-      console.log("Book data loaded:", bookData);
+    if(bookId) {
+      getBooks();
     }
-  }, [bookData]);
+  }, [bookId]);
 
-  // Loading state
-  if (isLoading) {
-    return <div className="book-page">Loading book...</div>;
+  async function getBooks() {
+    if (!bookId) return;
+
+    try {
+      setIsLoading(true);
+      setError(null);
+
+      const { data } = await axios.get(
+        `https://us-central1-summaristt.cloudfunctions.net/getBook?id=${bookId}`
+      );
+      setBook(data);
+      console.log(data);
+    }
+    catch (err){
+      console.log("Error Fetching Api Data");
+      setError("Failed to fetch book data")
+    } 
+    finally {
+      setIsLoading(false);
+    }
   }
 
-  // Error state
-  if (error) {
-    return <div className="book-page">Error loading book</div>;
-  }
-
-  // No book found
-  if (!book) {
-    return <div className="book-page">Book not found</div>;
-  }
 
   return (
     <div className="book-page">
       <div className="container">
         <div className="row">
           <div className="book">
+            {book && (
+              <>
+
+             
             <div className="book-detail">
               <div className="book-title">book Title: {book.title}</div>
               <div className="book-author">book Author: {book.author}</div>
@@ -111,10 +114,20 @@ export default function BookPage() {
                 <div className="book-description__author__text"></div>
               </div>
             </div>
-          </div>
+          
           <div className="book-image__wrapper">
             {/* <img src="" alt="" /> */}
           </div>
+           </>
+            )}
+            {
+              !book && (
+                <div className="book-loading">
+                  <p>Loading book details...</p>
+                </div>
+              )
+            }
+           </div>
         </div>
       </div>
     </div>

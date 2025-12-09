@@ -17,16 +17,7 @@ export const selectedBookApi = createApi({
         return Array.isArray(response) ? response[0] : response;
       },
     }),
-
-    getBookById: builder.query({
-      query: (bookId: string) => `?id=${bookId}`,
-      keepUnusedDataFor: 0,
-      transformResponse: (response: any) => {
-        console.log("Raw API response for book by ID:", response);
-        return Array.isArray(response) ? response[0] : response;
-      },
-    }),
   }),
 });
 
-export const { useGetSingleBookQuery, useGetBookByIdQuery } = selectedBookApi;
+export const { useGetSingleBookQuery} = selectedBookApi;
