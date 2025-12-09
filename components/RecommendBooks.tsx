@@ -33,7 +33,7 @@ export default function RecommendedBooks() {
             <div className="foryou__subtitle">We think you'll like these</div>
             <div ref={sliderRef} className="bookList keen-slider">
               {recBooksArray?.map((books) => (
-                <Link href="/book" key={books.id}>
+                <Link href={`book/${books?.id || "no-id"}`} key={books.id}>
                 <div  className="book keen-slider__slide">
                 <div className="bookImageWrapper">
                   <img src={books.imageLink} alt={books.title} className="bookImage" />

@@ -8,10 +8,11 @@ import Link from "next/link";
 export default function SuggestedBooks() {
   const { data: sugBooksArray } = useGetSugBooksQuery();
 
-  const [sliderRef, instanceRef] = useKeenSlider({
+  const [sliderRef, instanceRef] = useKeenSlider(
+    {
     mode: "free-snap",
     slides: {
-      perView: 4,
+      perView: 5,
       spacing: 20,
     },
     breakpoints: {
@@ -23,9 +24,10 @@ export default function SuggestedBooks() {
       console.log("slide changed");
     },
     created() {
-      console.log('suggestedBooks slider created!')
-    }
-  });
+      console.log("suggestedBooks slider created!");
+    },
+  }
+);
 
   return (
     <div className="suggestedBooksWrapper">
@@ -33,23 +35,23 @@ export default function SuggestedBooks() {
       <div className="foryou__subtitle">Browse those books</div>
       <div ref={sliderRef} className="bookList keen-slider">
         {sugBooksArray?.map((books) => (
-          <Link href="/book" key={books.id}>
-          <div  className="book keen-slide__slider">
-            <div className="bookImageWrapper">
-              <img
-                src={books.imageLink}
-                alt={books.title}
-                className="recBookImage"
-              />
+          <Link href={`book/${books?.id || "no-id"}`} key={books.id}>
+            <div className="book keen-slide__slider">
+              <div className="bookImageWrapper">
+                <img
+                  src={books.imageLink}
+                  alt={books.title}
+                  className="recBookImage"
+                />
+              </div>
+              <div className="bookName">{books.title}</div>
+              <div className="bookAuthor">{books.author}</div>
+              <div className="bookDescription">{books.subTitle}</div>
+              <div className="extraDetails">
+                <div className="bookLength"></div>
+                <div className="bookRating">{books.averageRating}</div>
+              </div>
             </div>
-            <div className="bookName">{books.title}</div>
-            <div className="bookAuthor">{books.author}</div>
-            <div className="bookDescription">{books.subTitle}</div>
-            <div className="extraDetails">
-              <div className="bookLength"></div>
-              <div className="bookRating">{books.averageRating}</div>
-            </div>
-          </div>
           </Link>
         ))}
       </div>
