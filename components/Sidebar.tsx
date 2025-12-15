@@ -6,6 +6,7 @@ import { IoMdSearch } from "react-icons/io";
 import { GoGear } from "react-icons/go";
 import { HiOutlineQuestionMarkCircle } from "react-icons/hi";
 import { LuLogOut } from "react-icons/lu";
+import Link from "next/link";
 
 export default function Sidebar() {
   return (
@@ -23,7 +24,10 @@ export default function Sidebar() {
             <div className={styles.optionIcon}>
               <AiOutlineHome />
             </div>
-            <div className={styles.topOptionLabel}>For you</div>
+            <Link href='/for-you'>
+             <div className={styles.topOptionLabel}>For you</div>
+            </Link>
+            
           </div>
           <div className={styles.sidebarOption}>
             <div className={styles.optionIcon}>

@@ -1,5 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+interface Book {
+  id: string;
+  title: string;
+  author: string;
+  subTitle: string;
+  imageLink: string;
+  averageRating: string;
+}
+
 export const recBooksApi = createApi({
   reducerPath: "recBooksApi",
   baseQuery: fetchBaseQuery({
@@ -7,7 +16,7 @@ export const recBooksApi = createApi({
       "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=recommended",
   }),
   endpoints: (builder) => ({
-    getRecBooks: builder.query({
+    getRecBooks: builder.query<Book[], void>({
       query: () => ``,
     }),
 

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { FaCirclePlay } from "react-icons/fa6";
 
 export default function SelectedBooks() {
-  const { data: book, error, isLoading, refetch } = useGetSingleBookQuery();
+  const { data: book, error, isLoading, refetch } = useGetSingleBookQuery('selectedBookApi');
   console.log("SelectedBook - book object:", book); // ← Add this line
   console.log("SelectedBook - book.id:", book?.id); // ← And this line
 
@@ -21,7 +21,7 @@ export default function SelectedBooks() {
     );
 
   return (
-    <Link href={`book/${book?.id || "no-id"}`}>
+    <Link href={`book/${book?.id}`}>
       <div className={styles.selectedBookWrapper}>
         <div className={styles.selectedBookContent}>
           <div className={styles.selectedBookDesc}>

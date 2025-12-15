@@ -7,6 +7,9 @@ import { FaRegStar } from "react-icons/fa";
 import { GoClock } from "react-icons/go";
 import { IoMicOutline } from "react-icons/io5";
 import { HiOutlineLightBulb } from "react-icons/hi";
+import { LuBookOpenText } from "react-icons/lu";
+import { CiBookmark } from "react-icons/ci";
+import Link from "next/link";
 
 interface Book {
   id: string;
@@ -17,30 +20,25 @@ interface Book {
   averageRating?: number;
   totalRating?: number;
   keyIdeas?: number;
+  tags?: string;
+  bookDescription?: string;
+  authorDescription?: string;
   // Add other book properties as needed
 }
 
 export default function BookPage() {
   const params = useParams();
-  const [bookId, setBookId] = useState<string | null>(null);
+  const [bookId, setBookId] = useState<string | string[]>('');
   const [book, setBook] = useState<Book | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  console.log(book);
-
   useEffect(() => {
     if (params?.id) {
-      const id = Array.isArray(params.id) ? params.id[0] : params.id;
+      const id = params.id;
       setBookId(id);
     }
   }, [params]);
-
-  useEffect(() => {
-    if (bookId) {
-      getBooks();
-    }
-  }, [bookId]);
 
   async function getBooks() {
     if (!bookId) return;
@@ -61,6 +59,12 @@ export default function BookPage() {
       setIsLoading(false);
     }
   }
+
+    useEffect(() => {
+    if (bookId) {
+      getBooks();
+    }
+  }, [bookId]);
 
   return (
     <div className="book-page">
@@ -95,24 +99,44 @@ export default function BookPage() {
                   </div>
                   <div className="user-options">
                     <div className="user-option__btns">
-                      <button className="user-option"></button>
-                      <button className="user-option"></button>
+                      <Link href={`/player/${book?.id}`}>
+                        <button className="user-option__btn" onClick={() => {`/player/${book?.id}`}}>
+                        <div className="user-option__icon">
+                          <LuBookOpenText />
+                        </div>
+                        <div className="user-option__label">
+                          Read
+                        </div>
+                      </button>
+                      </Link>
+                      <Link href={`/player/${book?.id}`}>
+                      <button className="user-option__btn ">
+                        <div className="user-option__icon">
+                          <IoMicOutline />
+                        </div>
+                        <div className="user-option__label">
+                          Listen
+                        </div>
+                      </button>
+
+                      </Link>
                     </div>
                     <div className="user-option__bookmark">
-                      <div className="user-option__bookmark__icon"></div>
-                      <div className="user-option__bookmark__label"></div>
+                      <div className="user-option__bookmark__icon"><CiBookmark /></div>
+                      <div className="user-option__bookmark__label"> Add title to My Library</div>
                     </div>
                   </div>
                   <div className="inner-book__description">
-                    <div className="inner-book__description__title"></div>
+                    <div className="inner-book__description__title section-header">What's it about?</div>
                     <div className="inner-book__description__tags">
-                      <div className="inner-book__description__tag"></div>
-                      <div className="inner-book__description__tag"></div>
+                      <div className="inner-book__description__tag">
+                      {book.tags}
+                      </div>
                     </div>
-                    <div className="inner-book__description__text"></div>
+                    <div className="inner-book__description__text">{book.bookDescription}</div>
                     <div className="inner-book__description__author">
-                      <div className="inner-book__desciption__title"></div>
-                      <div className="inner-book__description__author__text"></div>
+                      <div className="inner-book__desciption__author__title section-header">About the author</div>
+                      <div className="inner-book__description__author__text">{book.authorDescription}</div>
                     </div>
                   </div>
                 </div>

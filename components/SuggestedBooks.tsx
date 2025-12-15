@@ -6,7 +6,7 @@ import "keen-slider/keen-slider.min.css";
 import Link from "next/link";
 
 export default function SuggestedBooks() {
-  const { data: sugBooksArray } = useGetSugBooksQuery();
+  const { data: sugBooksArray, isLoading, error } = useGetSugBooksQuery();
 
   const [sliderRef, instanceRef] = useKeenSlider(
     {
