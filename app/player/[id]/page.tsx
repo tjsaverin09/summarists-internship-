@@ -1,5 +1,6 @@
 "use client";
 
+import { useGetBooksQuery } from "@/redux/allBookApiSlice";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "next/navigation";
@@ -11,6 +12,7 @@ interface Book {
 }
 
 export default function player() {
+  const { data: allBooks } = useGetBooksQuery()
   const params = useParams();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [bookId, setBookId] = useState<string | string[]>('');

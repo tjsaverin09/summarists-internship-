@@ -7,8 +7,6 @@ import { FaCirclePlay } from "react-icons/fa6";
 
 export default function SelectedBooks() {
   const { data: book, error, isLoading, refetch } = useGetSingleBookQuery('selectedBookApi');
-  console.log("SelectedBook - book object:", book); // ← Add this line
-  console.log("SelectedBook - book.id:", book?.id); // ← And this line
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading book</div>;
