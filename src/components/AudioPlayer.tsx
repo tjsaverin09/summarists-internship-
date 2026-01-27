@@ -12,8 +12,8 @@ export default function AudioPlayer() {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   return (
-    <div>
-      <div className="min-h-24 bg-[#2e2d2d] flex gap-9 lg:flex-row justify-between items-center text-white p-[0.5rem_10px]">
+    <div className="audio-player__wrapper">
+      <div className="audio-player">
         <TrackInfo />
         <Controls />
         <ProgressBar />

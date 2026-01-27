@@ -270,3 +270,41 @@ Player page
   max-width: 800px;
   margin: 0 auto;
 }
+
+/*
+
+AudioPlayer
+
+*/
+
+.audio-player__wrapper {
+  background-color: #042330;
+}
+
+.audio-player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 24px;
+  padding: 16px 0;
+  
+}
+
+.track-info {
+  display: flex;
+  align-items: center;
+  gap: 16px
+}
+
+.track-info__img--wrapper {
+  max-width: 72px;
+}
+
+.track-info__img {
+  width: 100%;
+}
+
+.player-controls, .track-info {
+  color: white;
+}
+
