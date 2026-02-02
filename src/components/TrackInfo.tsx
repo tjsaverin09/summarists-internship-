@@ -38,12 +38,12 @@ export default function TrackInfo() {
     <div className="track-info">
       <div className="track-info__img--wrapper">
         <img
-          src={book?.imageLink || "/placeholder.jpg"}
           className="track-info__img"
+          src={book?.imageLink || "/placeholder.jpg"}
           alt={book?.title}
         />
       </div>
-      <div className="track-info__descr">
+      <div className="track-info__details--wrapper">
         <div className="track-info__title">{book?.title || "Book title"}</div>
         <div className="track-info__author">
           {book?.author || "Book author"}

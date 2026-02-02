@@ -7,16 +7,18 @@ import { RiForward10Fill, RiReplay10Line } from "react-icons/ri";
 
 export default function Controls() {
   return(
-    <div className="player-controls">
-      <button className="rewind-btn">
+    <div className="audio-controls__wrapper">
+      <div className="audio__controls">
+      <button className="audio__controls--btn">
         <RiReplay10Line />
       </button>
-      <button className="play-btn">
+      <button className="audio__controls--btn audio__controls--btn-play">
         <BsFillPlayFill />
       </button>
-      <button className="fast-forward__btn">
+      <button className="audio__controls--btn">
         <RiForward10Fill />
       </button>
+      </div>
     </div>
   );
 }

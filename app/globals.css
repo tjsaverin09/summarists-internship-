@@ -290,6 +290,16 @@ AudioPlayer
   
 }
 
+/* 
+
+ TrackInfo
+
+ */
+ 
+ .player-controls, .track-info {
+   color: white;
+ }
+ 
 .track-info {
   display: flex;
   align-items: center;
@@ -297,14 +307,49 @@ AudioPlayer
 }
 
 .track-info__img--wrapper {
-  max-width: 72px;
+  width: 48px;
+  height: 48px;
+  max-width: 48px;
 }
 
 .track-info__img {
   width: 100%;
+  height: 100%;
 }
 
-.player-controls, .track-info {
-  color: white;
+.track-info__details--wrapper {
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+}
+
+.track-info__author {
+  color: #bac8ce;
+}
+
+/*
+
+AudioControls
+
+*/
+
+.audio__controls, .audio__controls--btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.audio__controls {
+  gap: 24px;
+}
+
+.audio__controls--btn {
+  font-size: 32px;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
