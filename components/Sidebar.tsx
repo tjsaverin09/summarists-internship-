@@ -24,28 +24,33 @@ export default function Sidebar() {
             <div className={styles.optionIcon}>
               <AiOutlineHome />
             </div>
-            <Link href='/for-you'>
-             <div className={styles.topOptionLabel}>For you</div>
+            <Link href="/for-you">
+              <div className={styles.topOptionLabel}>For you</div>
             </Link>
-            
           </div>
           <div className={styles.sidebarOption}>
             <div className={styles.optionIcon}>
               <IoBookmarkOutline />
             </div>
-            <div className={styles.topOptionLabel}>My Library</div>
+            <Link href="/">
+              <div className={styles.topOptionLabel}>My Library</div>
+            </Link>
           </div>
           <div className={styles.sidebarOption}>
             <div className={styles.optionIcon}>
               <RiBallPenLine />
             </div>
-            <div className={styles.topOptionLabel}>Highlights</div>
+            <div className={`${styles.topOptionLabel} ${styles.noClick}`}>
+              Highlights
+            </div>
           </div>
           <div className={styles.sidebarOption}>
             <div className={styles.optionIcon}>
               <IoMdSearch />
             </div>
-            <div className={styles.topOptionLabel}>Search</div>
+            <div className={`${styles.topOptionLabel} ${styles.noClick}`}>
+              Search
+            </div>
           </div>
         </div>
         <div className={styles.sidebarBottom}>
@@ -53,13 +58,17 @@ export default function Sidebar() {
             <div className={styles.optionIcon}>
               <GoGear />
             </div>
-            <div className="bottomOptionLabel">Settings</div>
+            <Link href="/">
+              <div className="bottomOptionLabel">Settings</div>
+            </Link>
           </div>
           <div className={styles.sidebarOption}>
             <div className={styles.optionIcon}>
               <HiOutlineQuestionMarkCircle />
             </div>
-            <div className="bottomOptionLabel">Help & Support</div>
+            <div className={`bottomOptionLabel ${styles.noClick}`}>
+              Help & Support
+            </div>
           </div>
           <div className={styles.sidebarOption}>
             <div className={styles.optionIcon}>
