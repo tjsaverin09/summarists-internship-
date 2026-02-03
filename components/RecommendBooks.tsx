@@ -1,40 +1,39 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import Swiper from "swiper";
-import { Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import { useGetRecBooksQuery } from "@/redux/recBooksApiSlice";
 import Link from "next/link";
+import 'keen-slider/keen-slider.min.css'
+import KeenSlider from 'keen-slider'
+import { useKeenSlider } from 'keen-slider/react'
 
 export default function RecommendedBooks() {
   const { data: recBooksArray } = useGetRecBooksQuery();
-  const swiperRef = useRef<Swiper | null>(null);
-
-  useEffect(() => {
-if (!recBooksArray || recBooksArray.length === 0) return;
-
-    swiperRef.current = new Swiper(".swiper", {
-      modules: [Navigation, Pagination],
-      direction: "horizontal",
-    });
-
-    return () => {
-      swiperRef.current?.destroy();
-    };
-  }, [recBooksArray]);
+  const [sliderRef, instanceRef] = useKeenSlider(
+    {
+      mode: "free-snap",
+    slides: {
+      perView: 5,
+      spacing: 20,
+    },
+    breakpoints: {
+      "(max-width: 768px)": {
+        slides: { perView: 2, spacing: 10 },
+      },
+    },
+      slideChanged() {
+        console.log('slide changed')
+      }
+    }
+  )
 
   return (
     <div className="recBooks">
       <div className="foryou__header">Recommended For You</div>
       <div className="foryou__subtitle">We think you'll like these</div>
-      <div className="bookList swiper">
+      <div className="bookList keen-slider" ref={sliderRef}>
         {recBooksArray?.map((books) => (
-          <div className="swiper-wrapper">
             <Link href={`book/${books?.id || "no-id"}`} key={books.id}>
-              <div className="book swiper-slide">
+              <div className="book keen-slider__slide">
                 <div className="bookImageWrapper">
                   <img
                     src={books.imageLink}
@@ -51,7 +50,6 @@ if (!recBooksArray || recBooksArray.length === 0) return;
                 </div>
               </div>
             </Link>
-          </div>
         ))}
       </div>
     </div>

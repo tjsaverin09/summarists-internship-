@@ -36,7 +36,7 @@ export default function SuggestedBooks() {
       <div ref={sliderRef} className="bookList keen-slider">
         {sugBooksArray?.map((books) => (
           <Link href={`book/${books?.id || "no-id"}`} key={books.id}>
-            <div className="book keen-slide__slider">
+            <div className="book keen-slider__slide">
               <div className="bookImageWrapper">
                 <img
                   src={books.imageLink}
