@@ -1,42 +1,19 @@
 "use client";
 
 import { useGetSugBooksQuery } from "@/redux/sugBooksApiSlice";
-import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
 import Link from "next/link";
 
 export default function SuggestedBooks() {
   const { data: sugBooksArray, isLoading, error } = useGetSugBooksQuery();
 
-  const [sliderRef, instanceRef] = useKeenSlider(
-    {
-    mode: "free-snap",
-    slides: {
-      perView: 5,
-      spacing: 20,
-    },
-    breakpoints: {
-      "(max-width: 768px)": {
-        slides: { perView: 2, spacing: 10 },
-      },
-    },
-    slideChanged() {
-      console.log("slide changed");
-    },
-    created() {
-      console.log("suggestedBooks slider created!");
-    },
-  }
-);
-
   return (
     <div className="suggestedBooksWrapper">
       <div className="foryou__header">Suggested Books</div>
       <div className="foryou__subtitle">Browse those books</div>
-      <div ref={sliderRef} className="bookList keen-slider">
+      <div className="bookList">
         {sugBooksArray?.map((books) => (
           <Link href={`book/${books?.id || "no-id"}`} key={books.id}>
-            <div className="book keen-slider__slide">
+            <div className="book">
               <div className="bookImageWrapper">
                 <img
                   src={books.imageLink}
