@@ -7,6 +7,7 @@ interface Book {
   subTitle: string;
   imageLink: string;
   averageRating: string;
+  subscriptionRequired: boolean;
 }
 
 export const recBooksApi = createApi({

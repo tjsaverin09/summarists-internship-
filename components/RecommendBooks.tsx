@@ -1,14 +1,12 @@
 "use client";
 
 import { useGetRecBooksQuery } from "@/redux/recBooksApiSlice";
+import { Span } from "next/dist/trace";
 import Link from "next/link";
 
 export default function RecommendedBooks() {
   const { data: recBooksArray } = useGetRecBooksQuery();
 
-  function bookPill() {
-    if (recBooksArray)
-  }
 
   return (
     <div className="recBooks">
@@ -18,6 +16,7 @@ export default function RecommendedBooks() {
         {recBooksArray?.map((books) => (
             <Link href={`book/${books?.id || "no-id"}`} key={books.id}>
               <div className="book">
+                {books.subscriptionRequired && <span className="book__premium--pill">Premium</span>}
                 <div className="bookImageWrapper">
                   <img
                     src={books.imageLink}
