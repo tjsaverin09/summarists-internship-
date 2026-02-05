@@ -1,5 +1,5 @@
 import { IoMdSearch } from "react-icons/io";
-import styles from "../CssModules/searchbar.module.css";
+import styles from "@/components/searchbar/searchbar.module.css";
 
 export default function Searchbar() {
   return (

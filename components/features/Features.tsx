@@ -1,4 +1,4 @@
-import styles from "../CssModules/features.module.css";
+import styles from "@/components/features/features.module.css";
 import { AiFillFileText } from "react-icons/ai";
 import { MdLightbulb } from "react-icons/md";
 import { FaMicrophone } from "react-icons/fa";

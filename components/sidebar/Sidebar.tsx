@@ -1,4 +1,4 @@
-import styles from "../CssModules/sidebar.module.css";
+import styles from "@/components/sidebar/sidebar.module.css";
 import { AiOutlineHome } from "react-icons/ai";
 import { IoBookmarkOutline } from "react-icons/io5";
 import { RiBallPenLine } from "react-icons/ri";

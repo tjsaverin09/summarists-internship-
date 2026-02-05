@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/CssModules/selectedBooks.module.css";
+import styles from "@/components/selectedBook/selectedBooks.module.css";
 import { useGetSingleBookQuery } from "@/redux/selectedBookApiSlice";
 import Link from "next/link";
 import { FaCirclePlay } from "react-icons/fa6";

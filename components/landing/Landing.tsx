@@ -1,10 +1,10 @@
 'use client'
 
 import Image from "next/image";
-import LandingImg from "../public/landing.png";
+import LandingImg from "@/public/landing.png";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/redux/loginModalSlice";
-import styles from "../CssModules/landing.module.css";
+import styles from "@/components/landing/landing.module.css";
 
 export default function Landing() {
 

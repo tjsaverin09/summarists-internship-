@@ -4,9 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { closeModal } from "@/redux/loginModalSlice";
 import { IoCloseOutline } from "react-icons/io5";
 import { IoPersonOutline } from "react-icons/io5";
-import googleLogo from "../public/google.png";
+import googleLogo from "@/public/google.png";
 import Image from "next/image";
-import styles from "../CssModules/loginModal.module.css";
+import styles from "@/components/loginModal/loginModal.module.css";
 import { useRouter } from "next/navigation";
 
 interface RootState {

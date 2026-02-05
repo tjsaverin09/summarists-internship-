@@ -1,5 +1,5 @@
-import Searchbar from "@/components/Searchbar";
-import Sidebar from "@/components/Sidebar";
+import Searchbar from "@/components/searchbar/Searchbar";
+import Sidebar from "@/components/sidebar/Sidebar";
 import AudioPlayer from "@/src/components/AudioPlayer";
 
 interface LayoutProps {
@@ -13,7 +13,9 @@ export default function PageLayout({ children }: LayoutProps) {
     >
       <Searchbar />
       <div style={{ display: "flex", flex: 1 }}>
-        <aside style={{ width: "300px", backgroundColor: "f5f5f5", height: "600px" }}>
+        <aside
+          style={{ width: "300px", backgroundColor: "f5f5f5", height: "600px" }}
+        >
           <Sidebar />
         </aside>
         <main style={{ flex: 1, padding: "20px" }}>{children}</main>

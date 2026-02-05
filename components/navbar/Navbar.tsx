@@ -1,8 +1,8 @@
 'use client'
 
 import Link from "next/link";
-import styles from "../CssModules/Navbar.module.css"
-import { useSelector } from "../redux/typedHooks";
+import styles from "@/components/navbar/Navbar.module.css";
+import { useSelector } from "@/redux/typedHooks";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/redux/loginModalSlice";
 

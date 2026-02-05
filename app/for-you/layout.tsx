@@ -1,22 +1,22 @@
-import Searchbar from "@/components/Searchbar"
-import Sidebar from "@/components/Sidebar"
+import Searchbar from "@/components/searchbar/Searchbar";
+import Sidebar from "@/components/sidebar/Sidebar";
 
 interface LayoutProps {
-    children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export default function PageLayout({ children }: LayoutProps) {
-    return (
-        <div style={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
-            <Searchbar />
-            <div style={{display: 'flex', flex: 1}}>
-            <aside style={{width: '300px', backgroundColor: 'f5f5f5'}}>
-                <Sidebar />
-            </aside>
-            <main style={{flex: 1, padding: '20px'}}>
-                {children}
-            </main>
-            </div>
-        </div>
-    )
+  return (
+    <div
+      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+    >
+      <Searchbar />
+      <div style={{ display: "flex", flex: 1 }}>
+        <aside style={{ width: "300px", backgroundColor: "f5f5f5" }}>
+          <Sidebar />
+        </aside>
+        <main style={{ flex: 1, padding: "20px" }}>{children}</main>
+      </div>
+    </div>
+  );
 }

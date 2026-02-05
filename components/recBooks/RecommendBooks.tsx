@@ -1,7 +1,6 @@
 "use client";
 
 import { useGetRecBooksQuery } from "@/redux/recBooksApiSlice";
-import { Span } from "next/dist/trace";
 import Link from "next/link";
 
 export default function RecommendedBooks() {

@@ -1,7 +1,7 @@
 'use client'
 
 import { FaStar } from "react-icons/fa";
-import styles from "../CssModules/reviews.module.css";
+import styles from "@/components/reviews/reviews.module.css";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/redux/loginModalSlice";
 

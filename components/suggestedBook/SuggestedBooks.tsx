@@ -14,6 +14,7 @@ export default function SuggestedBooks() {
         {sugBooksArray?.map((books) => (
           <Link href={`book/${books?.id || "no-id"}`} key={books.id}>
             <div className="book">
+              {books.subscriptionRequired && <span className="book__premium--pill">Premium</span>}
               <div className="bookImageWrapper">
                 <img
                   src={books.imageLink}
