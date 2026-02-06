@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Roboto } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from "@/redux/ReduxProvider";
-import LoginModal from "@/components/loginModal/LoginModal";
+import LoginModal from "@/components/modals/loginModal/LoginModal";
+import SignupModal from "@/components/modals/loginModal/SignupModal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,10 +16,10 @@ const geistMono = Geist_Mono({
 });
 
 const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin'],
-  variable: '--font-roboto'
-})
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-roboto",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -38,6 +39,7 @@ export default function RootLayout({
         <ReduxProvider>
           {children}
           <LoginModal />
+          <SignupModal />
         </ReduxProvider>
       </body>
     </html>

@@ -2,11 +2,12 @@
 
 import { useSelector, useDispatch } from "react-redux";
 import { closeModal } from "@/redux/loginModalSlice";
+import { openSignupModal } from "@/redux/signupModalSlice";
 import { IoCloseOutline } from "react-icons/io5";
 import { IoPersonOutline } from "react-icons/io5";
 import googleLogo from "@/public/google.png";
 import Image from "next/image";
-import styles from "@/components/loginModal/loginModal.module.css";
+import styles from "@/components/modals/loginModal/loginModal.module.css";
 import { useRouter } from "next/navigation";
 
 interface RootState {
@@ -25,11 +26,16 @@ export default function LoginModal() {
     router.push("/for-you");
   };
 
+  const handleSwitchToSignup = () => {
+    dispatch(closeModal());
+    dispatch(openSignupModal());
+  };
+
   if (!isOpen) return null;
 
   return (
     <div className={styles.modalOverlay} onClick={() => dispatch(closeModal())}>
-      <div className={styles.modalWrapper}>
+      <div className={styles.modalWrapper} onClick={(e) => e.stopPropagation()}>
         <div
           className={styles.closeButton}
           onClick={() => dispatch(closeModal())}
@@ -83,8 +89,10 @@ export default function LoginModal() {
           </form>
         </div>
 
-        <div className={styles.forgotPassword}>Forgot your password?</div>
-        <button className={styles.newAccountBtn}>Don't have an account?</button>
+        <button className={styles.forgotPassword}>Forgot your password?</button>
+        <button className={styles.newAccountBtn} onClick={handleSwitchToSignup}>
+          Don't have an account?
+        </button>
       </div>
     </div>
   );
