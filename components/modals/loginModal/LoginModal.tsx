@@ -9,6 +9,9 @@ import googleLogo from "@/public/google.png";
 import Image from "next/image";
 import styles from "@/components/modals/loginModal/loginModal.module.css";
 import { useRouter } from "next/navigation";
+import { auth } from "@/app/firebase/init";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
 
 interface RootState {
   loginModal: {
@@ -20,10 +23,28 @@ export default function LoginModal() {
   const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.loginModal.isOpen);
   const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleGuestLogin = () => {
     dispatch(closeModal());
     router.push("/for-you");
+  };
+
+  const logIn = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email.trim(),
+        password,
+      );
+      console.log(userCredential.user);
+      dispatch(closeModal());
+      router.push("/for-you");
+    } catch (error) {
+      console.error("Login error:", error);
+    }
   };
 
   const handleSwitchToSignup = () => {
@@ -72,18 +93,24 @@ export default function LoginModal() {
           <div className={styles.modalBreak}>
             <span>or</span>
           </div>
-          <form className={styles.modalMainForm}>
+          <form onSubmit={logIn} className={styles.modalMainForm}>
             <input
               placeholder="Email Address"
-              type="text"
+              type="email"
               className={styles.formBox}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
             <input
               placeholder="Password"
-              type="text"
+              type="password"
               className={styles.formBox}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
             />
-            <button className="btn">
+            <button className="btn" type="submit">
               <span>Login</span>
             </button>
           </form>

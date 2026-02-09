@@ -9,6 +9,7 @@ import { openModal } from "@/redux/loginModalSlice";
 import { closeSignupModal } from "@/redux/signupModalSlice";
 import { auth } from "@/app/firebase/init";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
 
 interface RootState {
   signupModal: {
@@ -19,70 +20,95 @@ interface RootState {
 export default function SignupModal() {
   const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.signupModal.isOpen);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const handleSwitchToLogin = () => {
-        dispatch(closeSignupModal());
-        dispatch(openModal())
-    }
+  const handleSwitchToLogin = () => {
+    dispatch(closeSignupModal());
+    dispatch(openModal());
+  };
 
   if (!isOpen) return null;
 
-  const signUp = async (e: React.FormEvent) => {
+  const signUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("register");
-    createUserWithEmailAndPassword(auth, 'email.email.com', 'test123')
-     .then((user) => {
-        console.log(user)
-     })
-     .catch((error) => {
-      console.log(error)
-     })
-  }
-  
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email.trim(),
+        password,
+      );
+      console.log(userCredential.user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <> 
-    <div className={styles.modalOverlay} onClick={() => dispatch(closeSignupModal())}>
-      <div className={styles.modalWrapper} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.closeBtn} onClick={() => dispatch(closeSignupModal())}>
-          <IoCloseOutline />
-        </div>
-        <div className={styles.modalContent}>
-          <div className={styles.modalTitle}>Sign up to Summarist</div>
-          <div className={`btn ${styles.modalGoogleBtn} ${styles.modalBtn}`}>
-            <div
-              className={`${styles.googleIconWrapper} ${styles.modalBtnIcon}`}
-            >
-              <Image
-                src={googleLogo}
-                alt="Google logo"
-                width={24}
-                height={24}
-              />
+    <>
+      <div
+        className={styles.modalOverlay}
+        onClick={() => dispatch(closeSignupModal())}
+      >
+        <div
+          className={styles.modalWrapper}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div
+            className={styles.closeBtn}
+            onClick={() => dispatch(closeSignupModal())}
+          >
+            <IoCloseOutline />
+          </div>
+          <div className={styles.modalContent}>
+            <div className={styles.modalTitle}>Sign up to Summarist</div>
+            <div className={`btn ${styles.modalGoogleBtn} ${styles.modalBtn}`}>
+              <div
+                className={`${styles.googleIconWrapper} ${styles.modalBtnIcon}`}
+              >
+                <Image
+                  src={googleLogo}
+                  alt="Google logo"
+                  width={24}
+                  height={24}
+                />
+              </div>
+              <div className={styles.ModalBtnLabel}>Sign up with Google</div>
             </div>
-            <div className={styles.ModalBtnLabel}>Sign up with Google</div>
+            <div className={styles.modalBreak}>
+              <span>or</span>
+            </div>
+            <form onSubmit={signUp} className={styles.modalMainForm}>
+              <input
+                placeholder="Email Address"
+                type="email"
+                className={styles.formBox}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <input
+                placeholder="Password"
+                type="password"
+                className={styles.formBox}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                minLength={6}
+                required
+              />
+              <button className="btn" type="submit">
+                Sign up
+              </button>
+            </form>
           </div>
-          <div className={styles.modalBreak}>
-            <span>or</span>
-          </div>
-          <form onSubmit={signUp} className={styles.modalMainForm}>
-             <input
-              placeholder="Email Address"
-              type="email"
-              className={styles.formBox}
-            />
-            <input
-              placeholder="Password"
-              type="password"
-              className={styles.formBox}
-            />
-          <button className="btn" type="submit">Sign up</button>
-          </form>
+          <button
+            className={styles.newAccountBtn}
+            onClick={() => handleSwitchToLogin()}
+          >
+            Already have an account?
+          </button>
         </div>
-        <button className={styles.newAccountBtn} onClick={() => handleSwitchToLogin()}>
-          Already have an account?
-        </button>
       </div>
-    </div>
     </>
   );
 }
