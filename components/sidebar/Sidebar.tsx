@@ -58,7 +58,7 @@ export default function Sidebar() {
             <div className={styles.optionIcon}>
               <GoGear />
             </div>
-            <Link href="/">
+            <Link href="/settings">
               <div className="bottomOptionLabel">Settings</div>
             </Link>
           </div>

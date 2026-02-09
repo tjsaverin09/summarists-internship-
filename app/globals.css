@@ -371,3 +371,27 @@ AudioControls
   cursor: pointer;
 }
 
+/*
+
+Settings
+
+*/
+
+.settings__wrapper {
+
+}
+
+.settings__header {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.settings__title {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.section__break {
+  border: 1px solid lightgrey;
+  margin: 8px 0;
+}

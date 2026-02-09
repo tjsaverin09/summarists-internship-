@@ -7,6 +7,8 @@ import googleLogo from "@/public/google.png";
 import Image from "next/image";
 import { openModal } from "@/redux/loginModalSlice";
 import { closeSignupModal } from "@/redux/signupModalSlice";
+import { auth } from "@/app/firebase/init";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 interface RootState {
   signupModal: {
@@ -25,7 +27,20 @@ export default function SignupModal() {
 
   if (!isOpen) return null;
 
+  const signUp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("register");
+    createUserWithEmailAndPassword(auth, 'email.email.com', 'test123')
+     .then((user) => {
+        console.log(user)
+     })
+     .catch((error) => {
+      console.log(error)
+     })
+  }
+  
   return (
+    <> 
     <div className={styles.modalOverlay} onClick={() => dispatch(closeSignupModal())}>
       <div className={styles.modalWrapper} onClick={(e) => e.stopPropagation()}>
         <div className={styles.closeBtn} onClick={() => dispatch(closeSignupModal())}>
@@ -49,24 +64,25 @@ export default function SignupModal() {
           <div className={styles.modalBreak}>
             <span>or</span>
           </div>
-          <form action="" className={styles.modalMainForm}>
+          <form onSubmit={signUp} className={styles.modalMainForm}>
              <input
               placeholder="Email Address"
-              type="text"
+              type="email"
               className={styles.formBox}
             />
             <input
               placeholder="Password"
-              type="text"
+              type="password"
               className={styles.formBox}
             />
+          <button className="btn" type="submit">Sign up</button>
           </form>
-          <button className="btn">Sign up</button>
         </div>
         <button className={styles.newAccountBtn} onClick={() => handleSwitchToLogin()}>
           Already have an account?
         </button>
       </div>
     </div>
+    </>
   );
 }
