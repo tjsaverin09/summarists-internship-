@@ -1,3 +1,5 @@
+'use client'
+
 import styles from "@/components/sidebar/sidebar.module.css";
 import { AiOutlineHome } from "react-icons/ai";
 import { IoBookmarkOutline } from "react-icons/io5";
@@ -7,8 +9,20 @@ import { GoGear } from "react-icons/go";
 import { HiOutlineQuestionMarkCircle } from "react-icons/hi";
 import { LuLogOut } from "react-icons/lu";
 import Link from "next/link";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/app/firebase/init";
+import { useState, useEffect } from "react";
 
 export default function Sidebar() {
+  const [user, setUser] = useState<User | null>(null)
+
+  useEffect(() => {
+    const logout  = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser)
+    })
+    return () => logout()
+  }, [])
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebarLogoWrapper}>
