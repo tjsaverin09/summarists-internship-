@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import styles from "@/components/sidebar/sidebar.module.css";
 import { AiOutlineHome } from "react-icons/ai";
@@ -9,19 +9,19 @@ import { GoGear } from "react-icons/go";
 import { HiOutlineQuestionMarkCircle } from "react-icons/hi";
 import { LuLogOut } from "react-icons/lu";
 import Link from "next/link";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "@/app/firebase/init";
 import { useState, useEffect } from "react";
 
 export default function Sidebar() {
-  const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const logout  = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser)
-    })
-    return () => logout()
-  }, [])
+    const logout = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => logout();
+  }, []);
 
   return (
     <div className={styles.sidebar}>
@@ -34,22 +34,24 @@ export default function Sidebar() {
       </div>
       <div className={styles.sidebarContent}>
         <div className={styles.sidebarTop}>
-          <div className={styles.sidebarOption}>
-            <div className={styles.optionIcon}>
-              <AiOutlineHome />
-            </div>
-            <Link href="/for-you">
+          <Link href="/for-you">
+            <div className={styles.sidebarOption}>
+              <div className={styles.optionIcon}>
+                <AiOutlineHome />
+              </div>
+
               <div className={styles.topOptionLabel}>For you</div>
-            </Link>
-          </div>
-          <div className={styles.sidebarOption}>
-            <div className={styles.optionIcon}>
-              <IoBookmarkOutline />
             </div>
-            <Link href="/">
+          </Link>
+          <Link href="/">
+            <div className={styles.sidebarOption}>
+              <div className={styles.optionIcon}>
+                <IoBookmarkOutline />
+              </div>
+
               <div className={styles.topOptionLabel}>My Library</div>
-            </Link>
-          </div>
+            </div>
+          </Link>
           <div className={styles.sidebarOption}>
             <div className={styles.optionIcon}>
               <RiBallPenLine />
@@ -84,12 +86,16 @@ export default function Sidebar() {
               Help & Support
             </div>
           </div>
-          <div className={styles.sidebarOption}>
+          <button className={styles.sidebarOption}>
             <div className={styles.optionIcon}>
               <LuLogOut />
             </div>
-            <div className="bottomOptionLabel">Login</div>
-          </div>
+            {user ? (
+              <div className="bottomOptionLabel">Logout</div>
+            ) : (
+              <div className="bottomOptionLabel">Login</div>
+            )}
+          </button>
         </div>
       </div>
     </div>

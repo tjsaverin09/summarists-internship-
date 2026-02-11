@@ -10,6 +10,7 @@ import { closeSignupModal } from "@/redux/signupModalSlice";
 import { auth } from "@/app/firebase/init";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface RootState {
   signupModal: {
@@ -19,6 +20,7 @@ interface RootState {
 
 export default function SignupModal() {
   const dispatch = useDispatch();
+  const router = useRouter();
   const isOpen = useSelector((state: RootState) => state.signupModal.isOpen);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,6 +40,8 @@ export default function SignupModal() {
         email.trim(),
         password,
       );
+      dispatch(closeSignupModal());
+      router.push("/for-you")
       console.log(userCredential.user);
     } catch (error) {
       console.log(error);

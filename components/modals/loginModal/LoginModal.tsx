@@ -9,7 +9,8 @@ import googleLogo from "@/public/google.png";
 import Image from "next/image";
 import styles from "@/components/modals/loginModal/loginModal.module.css";
 import { useRouter } from "next/navigation";
-import { auth } from "@/app/firebase/init";
+import { auth, googleProvider } from "@/app/firebase/init";
+import { signInWithPopup } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 
@@ -25,10 +26,28 @@ export default function LoginModal() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleGuestLogin = () => {
     dispatch(closeModal());
     router.push("/for-you");
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      // The signed-in user info
+      const user = result.user;
+      console.log("Logged in as:", user.displayName);
+      
+      // You can now redirect the user or update your app state
+    } catch (error) {
+    if (error instanceof Error) {
+      console.error("Authentication error:", error.message);
+    } else {
+      console.error("Authentication error:", String(error));
+    }
+  }
   };
 
   const logIn = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -42,8 +61,9 @@ export default function LoginModal() {
       console.log(userCredential.user);
       dispatch(closeModal());
       router.push("/for-you");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Login error:", error);
+      setError(error.message);
     }
   };
 
@@ -64,6 +84,9 @@ export default function LoginModal() {
           <IoCloseOutline />
         </div>
         <div className={styles.modalContent}>
+          {error && (
+              <div style={{ color: "red", marginBottom: "10px" }}>{error}</div>
+            )}
           <div className={styles.modalTitle}>Log in to Summarist</div>
           <button
             className={`btn ${styles.modalGuestBtn} ${styles.modalBtn}`}
@@ -77,7 +100,7 @@ export default function LoginModal() {
           <div className={styles.modalBreak}>
             <span>or</span>
           </div>
-          <div className={`btn ${styles.modalGoogleBtn} ${styles.modalBtn}`}>
+          <div className={`btn ${styles.modalGoogleBtn} ${styles.modalBtn}`} onClick={handleGoogleLogin}>
             <div
               className={`${styles.googleIconWrapper} ${styles.modalBtnIcon}`}
             >
@@ -110,6 +133,7 @@ export default function LoginModal() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            
             <button className="btn" type="submit">
               <span>Login</span>
             </button>
