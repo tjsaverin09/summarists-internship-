@@ -6,6 +6,17 @@ import Link from "next/link";
 export default function RecommendedBooks() {
   const { data: recBooksArray } = useGetRecBooksQuery();
 
+  function loading() {
+    return (
+      <div className="bookList">
+        {new Array(7).fill(0).map((_, id)) => (
+          <div className="book skeleton-box" key={id}></div>
+        )
+
+        }
+      </div>
+    )
+  }
 
   return (
     <div className="recBooks">

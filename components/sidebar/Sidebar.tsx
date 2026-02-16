@@ -14,11 +14,11 @@ import { auth } from "@/app/firebase/init";
 import { useState, useEffect } from "react";
 
 export default function Sidebar() {
-  const [user, setUser] = useState<User | null>(null);
+  const [userLoggedIn, setUserLoggedIn] = useState<User | null>(null);
 
   useEffect(() => {
     const logout = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      setUserLoggedIn(currentUser);
     });
     return () => logout();
   }, []);
@@ -90,10 +90,10 @@ export default function Sidebar() {
             <div className={styles.optionIcon}>
               <LuLogOut />
             </div>
-            {user ? (
-              <div className="bottomOptionLabel">Logout</div>
-            ) : (
+            {!userLoggedIn ? (
               <div className="bottomOptionLabel">Login</div>
+            ) : (
+              <div className="bottomOptionLabel">Logout</div>
             )}
           </button>
         </div>

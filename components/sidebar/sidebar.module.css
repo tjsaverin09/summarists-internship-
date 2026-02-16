@@ -35,6 +35,7 @@
     padding: 24px;
     gap: 8px;
     width: 100%;
+    cursor: pointer;
 }
 
 .sidebarOption:hover {
