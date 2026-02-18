@@ -19,7 +19,9 @@ export default function SelectedBooks() {
     );
 
   return (
+    
     <Link href={`book/${book?.id}`}>
+      <div className="foryou__header">Selected just for you</div>
       <div className={styles.selectedBookWrapper}>
         <div className={styles.selectedBookContent}>
           <div className={styles.selectedBookDesc}>

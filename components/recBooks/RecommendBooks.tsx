@@ -2,31 +2,46 @@
 
 import { useGetRecBooksQuery } from "@/redux/recBooksApiSlice";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function RecommendedBooks() {
-  const { data: recBooksArray } = useGetRecBooksQuery();
+  const { data: recBooksArray, isLoading } = useGetRecBooksQuery();
 
-  function loading() {
+  function renderLoadingState() {
     return (
       <div className="bookList">
-        {new Array(7).fill(0).map((_, id)) => (
-          <div className="book skeleton-box" key={id}></div>
-        )
-
-        }
+        {new Array(7).fill(0).map((_, id) => (
+          <div className="book" key={id}>       
+              <div className="bookImageWrapper">
+                <img className="bookImage skeleton-box" />
+              </div>
+              <div className="bookName skeleton-box"></div>
+              <div className="bookAuthor skeleton-box"></div>
+              <div className="bookDescription skeleton-box"></div>
+              <div className="extraDetails skeleton-box">
+                <div className="bookLength skeleton-box"></div>
+                <div className="bookRating skeleton-box"></div>
+              </div>
+          </div>
+        ))}
       </div>
-    )
+    );
   }
 
   return (
     <div className="recBooks">
       <div className="foryou__header">Recommended For You</div>
       <div className="foryou__subtitle">We think you'll like these</div>
-      <div className="bookList">
-        {recBooksArray?.map((books) => (
+      {isLoading ? (
+        renderLoadingState()
+      ) : (
+        <div className="bookList">
+          {recBooksArray?.map((books) => (
             <Link href={`book/${books?.id || "no-id"}`} key={books.id}>
               <div className="book">
-                {books.subscriptionRequired && <span className="book__premium--pill">Premium</span>}
+                {books.subscriptionRequired && (
+                  <span className="book__premium--pill">Premium</span>
+                )}
                 <div className="bookImageWrapper">
                   <img
                     src={books.imageLink}
@@ -43,8 +58,9 @@ export default function RecommendedBooks() {
                 </div>
               </div>
             </Link>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
