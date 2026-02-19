@@ -3,25 +3,26 @@
 import { useGetRecBooksQuery } from "@/redux/recBooksApiSlice";
 import Link from "next/link";
 import { useState } from "react";
+import styles from "./recommendedBooks.module.css";
 
 export default function RecommendedBooks() {
   const { data: recBooksArray, isLoading } = useGetRecBooksQuery();
 
   function renderLoadingState() {
     return (
-      <div className="bookList">
+      <div className={`bookList ${styles.loadingState}`}>
         {new Array(7).fill(0).map((_, id) => (
-          <div className="book" key={id}>       
-              <div className="bookImageWrapper">
-                <img className="bookImage skeleton-box" />
-              </div>
-              <div className="bookName skeleton-box"></div>
-              <div className="bookAuthor skeleton-box"></div>
-              <div className="bookDescription skeleton-box"></div>
-              <div className="extraDetails skeleton-box">
-                <div className="bookLength skeleton-box"></div>
-                <div className="bookRating skeleton-box"></div>
-              </div>
+          <div className={`book ${styles.bookLoading}`} key={id}>
+            <div className={`bookImageWrapper ${styles.imageLoading}`}>
+              <div className={styles.skeleton} />
+            </div>
+            <div className={`bookName ${styles.skeleton}`}></div>
+            <div className={`bookAuthor ${styles.skeleton}`}></div>
+            <div className={`bookDescription ${styles.skeleton}`}></div>
+            <div className="extraDetails">
+              <div className={`bookLength ${styles.skeleton}`}></div>
+              <div className={`bookRating ${styles.skeleton}`}></div>
+            </div>
           </div>
         ))}
       </div>

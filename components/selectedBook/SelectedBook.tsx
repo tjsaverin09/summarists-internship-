@@ -8,15 +8,16 @@ import { FaCirclePlay } from "react-icons/fa6";
 export default function SelectedBooks() {
   const { data: book, error, isLoading, refetch } = useGetSingleBookQuery('selectedBookApi');
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading book</div>;
-  if (!book)
+
+  function renderLoadingState() {
     return (
-      <div>
-        No book data available
-        <button onClick={() => refetch()}>Retry</button>
+      <>
+      <div className={styles.selectedBookCoverWrapper}>
+        <div className="skeleton-box"></div>
       </div>
-    );
+      </>
+    )
+  }
 
   return (
     
@@ -30,13 +31,14 @@ export default function SelectedBooks() {
           </div>
           <div className={styles.selectedBooksDivider}></div>
           <div className={styles.selectedBook}>
-            <div className={styles.selectedBookCoverWrapper}>
+            {isLoading ? (renderLoadingState()) : (<div className={styles.selectedBookCoverWrapper}>
               <img
                 src={book?.imageLink || "/placeholder.jpg"}
                 alt={book?.title || "Book Cover"}
                 className={styles.selectedBookCover}
               />
-            </div>
+            </div>)}
+            
             <div className={styles.selectedBookDetails}>
               <div className={styles.selectedBookName}>{book?.title}</div>
               <div className={styles.selectedBookAuthor}>{book?.author}</div>
