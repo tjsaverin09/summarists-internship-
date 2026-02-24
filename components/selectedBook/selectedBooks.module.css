@@ -41,12 +41,14 @@
 .selectedBookDetails {
     display: flex;
     flex-direction: column;
+    
 }
 
 .selectedBookName {
     font-weight: 600;
     color: #032b41;
     margin-bottom: 8px;
+    
 }
 
 .selectedBookAuthor {

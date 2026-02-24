@@ -396,12 +396,30 @@ Settings
   margin: 8px 0;
 }
 
+/*
+
+Skeleton
+
+*/
+
 .skeleton-box {
   width: 100%;
   height: 100%;
   background-color: rgba(176, 174, 174, 0.745);
   margin: auto;
 }
+
+.book__image--skeleton {
+  max-width: 40px;
+  max-height: 100px;
+  background-color: rgba(176, 174, 174, 0.745);
+}
+
+.book__name--skeleton {
+  max-width: 20px;
+  background-color: rgba(176, 174, 174, 0.745)
+}
+
 
 @media (max-width: 992) {
   .foryou__header {

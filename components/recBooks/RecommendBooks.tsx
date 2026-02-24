@@ -12,16 +12,26 @@ export default function RecommendedBooks() {
     return (
       <div className={`bookList ${styles.loadingState}`}>
         {new Array(7).fill(0).map((_, id) => (
-          <div className={`book ${styles.bookLoading}`} key={id}>
-            <div className={`bookImageWrapper ${styles.imageLoading}`}>
-              <div className={styles.skeleton} />
+          <div className='book' key={id}>
+            <div className="bookImageWrapper ">
+              <div className="book__image--skeleton"></div>
             </div>
-            <div className={`bookName ${styles.skeleton}`}></div>
-            <div className={`bookAuthor ${styles.skeleton}`}></div>
-            <div className={`bookDescription ${styles.skeleton}`}></div>
+            <div className="bookName ">
+              <div className="book__name--skeleton"></div>
+            </div>
+            <div className="bookAuthor ">
+              <div className="book__author--skeleton"></div>
+            </div>
+            <div className="bookDescription ">
+              <div className="book__descr--skeleton"></div>
+            </div>
             <div className="extraDetails">
-              <div className={`bookLength ${styles.skeleton}`}></div>
-              <div className={`bookRating ${styles.skeleton}`}></div>
+              <div className="bookLength">
+                <div className="book__length--skeleton"></div>
+              </div>
+              <div className="bookRating">
+                <div className="book__rating--skeleton"></div>
+              </div>
             </div>
           </div>
         ))}

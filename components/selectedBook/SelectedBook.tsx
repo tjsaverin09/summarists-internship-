@@ -4,10 +4,10 @@ import styles from "@/components/selectedBook/selectedBooks.module.css";
 import { useGetSingleBookQuery } from "@/redux/selectedBookApiSlice";
 import Link from "next/link";
 import { FaCirclePlay } from "react-icons/fa6";
+import { useState } from "react";
 
 export default function SelectedBooks() {
   const { data: book, error, isLoading, refetch } = useGetSingleBookQuery('selectedBookApi');
-
 
   function renderLoadingState() {
     return (
@@ -49,6 +49,7 @@ export default function SelectedBooks() {
                 <div className="selectedBookLength">3 mins 23 secs</div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
