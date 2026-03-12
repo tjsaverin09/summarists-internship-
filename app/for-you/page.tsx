@@ -10,7 +10,6 @@ export default function forYou() {
     <div className="container">
       <div className="row">
         <div className='forYouWrapper'>
-          <div className="foryou__header">Selected just for you</div>
           <SelectedBooks />
           <RecommendedBooks />
           <SuggestedBooks />

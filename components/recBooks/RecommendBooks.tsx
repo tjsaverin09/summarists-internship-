@@ -4,34 +4,30 @@ import { useGetRecBooksQuery } from "@/redux/recBooksApiSlice";
 import Link from "next/link";
 import { useState } from "react";
 import styles from "./recommendedBooks.module.css";
+import Loading from "@/app/UI/Loading"
 
 export default function RecommendedBooks() {
   const { data: recBooksArray, isLoading } = useGetRecBooksQuery();
 
   function renderLoadingState() {
     return (
-      <div className={`bookList ${styles.loadingState}`}>
+      <div className="bookList">
         {new Array(7).fill(0).map((_, id) => (
           <div className='book' key={id}>
             <div className="bookImageWrapper ">
               <div className="book__image--skeleton"></div>
             </div>
-            <div className="bookName ">
-              <div className="book__name--skeleton"></div>
+            <div className="bookName">
+              <div className="title__skeleton"></div>
             </div>
             <div className="bookAuthor ">
-              <div className="book__author--skeleton"></div>
+              <div className="detail__skeleton"></div>
             </div>
             <div className="bookDescription ">
-              <div className="book__descr--skeleton"></div>
+              <div className="descr__skeleton"></div>
             </div>
             <div className="extraDetails">
-              <div className="bookLength">
-                <div className="book__length--skeleton"></div>
-              </div>
-              <div className="bookRating">
-                <div className="book__rating--skeleton"></div>
-              </div>
+                <div className="detail__skeleton"></div>
             </div>
           </div>
         ))}
@@ -44,7 +40,7 @@ export default function RecommendedBooks() {
       <div className="foryou__header">Recommended For You</div>
       <div className="foryou__subtitle">We think you'll like these</div>
       {isLoading ? (
-        renderLoadingState()
+        <Loading/>
       ) : (
         <div className="bookList">
           {recBooksArray?.map((books) => (

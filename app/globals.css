@@ -405,19 +405,39 @@ Skeleton
 .skeleton-box {
   width: 100%;
   height: 100%;
-  background-color: rgba(176, 174, 174, 0.745);
+  background-color: red;
   margin: auto;
 }
 
 .book__image--skeleton {
-  max-width: 40px;
-  max-height: 100px;
-  background-color: rgba(176, 174, 174, 0.745);
+  width:  100%;
+  max-width: 100px;
+  height: 100%;
+  max-height: 200px;
+  background-color: red;
 }
 
-.book__name--skeleton {
-  max-width: 20px;
-  background-color: rgba(176, 174, 174, 0.745)
+.title__skeleton {
+  max-width: 100px;
+
+  background-color: red
+}
+
+.detail__skeleton {
+  width: 100%;
+  max-width: 80px;
+  height: 20px;
+
+  border-radius: 4px;
+  background-color: red
+}
+
+.descr__skeleton {
+  width: 100%;
+  max-width: 100x;
+  height: 32px;
+  border-radius: 4px;
+  background-color: red
 }
 
 
