@@ -4,7 +4,8 @@ export default function Loading() {
         {new Array(7).fill(0).map((_, id) => (
           <div className='book' key={id}>
             <div className="bookImageWrapper ">
-              <div className="book__image--skeleton"></div>
+              <div className="skeleton-box"></div>
+              <div className="skeleton__img--test"></div>
             </div>
             <div className="bookName">
               <div className="title__skeleton"></div>

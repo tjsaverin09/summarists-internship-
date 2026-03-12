@@ -409,6 +409,13 @@ Skeleton
   margin: auto;
 }
 
+.skeleton__img--test {
+  background-color: hotpink;
+  width: 150px;
+  height: 200px;
+  border-radius: 4px;
+}
+
 .book__image--skeleton {
   width:  100%;
   max-width: 100px;
@@ -420,16 +427,15 @@ Skeleton
 .title__skeleton {
   max-width: 100px;
 
-  background-color: red
+  background-color: purple;
 }
 
 .detail__skeleton {
   width: 100%;
   max-width: 80px;
   height: 20px;
-
   border-radius: 4px;
-  background-color: red
+  background-color: purple;
 }
 
 .descr__skeleton {
@@ -437,12 +443,17 @@ Skeleton
   max-width: 100x;
   height: 32px;
   border-radius: 4px;
-  background-color: red
+  background-color: peachpuff
 }
 
 
-@media (max-width: 992) {
+
+@media (max-width: 992px) {
   .foryou__header {
     margin: 0 auto;
   }
+}
+
+@media (max-width: 768px) {
+  
 }

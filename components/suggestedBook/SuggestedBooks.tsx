@@ -3,37 +3,19 @@
 import { useGetSugBooksQuery } from "@/redux/sugBooksApiSlice";
 import Link from "next/link";
 import styles from "@/components/recBooks/recommendedBooks.module.css";
+import Loading from "@/app/UI/Loading";
 
 export default function SuggestedBooks() {
   const { data: sugBooksArray, isLoading, error } = useGetSugBooksQuery();
 
-  function renderLoadingState() {
-    return (
-      <div className={`bookList ${styles.loadingState}`}>
-        {new Array(7).fill(0).map((_, id) => (
-          <div className={`book ${styles.bookLoading}`} key={id}>
-            <div className={`bookImageWrapper ${styles.imageLoading}`}>
-              <div className={styles.skeleton} />
-            </div>
-            <div className={`bookName ${styles.skeleton}`}></div>
-            <div className={`bookAuthor ${styles.skeleton}`}></div>
-            <div className={`bookDescription ${styles.skeleton}`}></div>
-            <div className="extraDetails">
-              <div className={`bookLength ${styles.skeleton}`}></div>
-              <div className={`bookRating ${styles.skeleton}`}></div>
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  }
+
 
   return (
     <div className="suggestedBooksWrapper">
       <div className="foryou__header">Suggested Books</div>
       <div className="foryou__subtitle">Browse those books</div>
       {isLoading ? (
-        renderLoadingState()
+        <Loading/>
       ) : (
       <div className="bookList">
         {sugBooksArray?.map((books) => (
