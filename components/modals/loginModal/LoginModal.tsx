@@ -3,6 +3,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { closeModal } from "@/redux/loginModalSlice";
 import { openSignupModal } from "@/redux/signupModalSlice";
+import { openForgotPasswordModal } from "@/redux/forgotPasswordModalSlice";
 import { IoCloseOutline } from "react-icons/io5";
 import { IoPersonOutline } from "react-icons/io5";
 import googleLogo from "@/public/google.png";
@@ -10,8 +11,7 @@ import Image from "next/image";
 import styles from "@/components/modals/loginModal/loginModal.module.css";
 import { useRouter } from "next/navigation";
 import { auth, googleProvider } from "@/app/firebase/init";
-import { signInWithPopup } from "firebase/auth";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithPopup, signInWithEmailAndPassword, getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { useState } from "react";
 
 interface RootState {
@@ -66,6 +66,11 @@ export default function LoginModal() {
       setError(error.message);
     }
   };
+
+  const handleForgotPassword = () => {
+    dispatch (closeModal());
+    dispatch (openForgotPasswordModal());
+  }
 
   const handleSwitchToSignup = () => {
     dispatch(closeModal());
@@ -140,8 +145,8 @@ export default function LoginModal() {
           </form>
         </div>
 
-        <button className={styles.forgotPassword}>Forgot your password?</button>
-        <button className={styles.newAccountBtn} onClick={handleSwitchToSignup}>
+        <button className={styles.forgotPassword} onClick={handleForgotPassword}>Forgot your password?</button>
+        <button className={styles.modalBottomBtn} onClick={handleSwitchToSignup}>
           Don't have an account?
         </button>
       </div>

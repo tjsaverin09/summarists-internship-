@@ -6,6 +6,7 @@ import { selectedBookApi } from "./selectedBookApiSlice";
 import { recBooksApi } from "./recBooksApiSlice";
 import { sugBooksApi } from "./sugBooksApiSlice";
 import { signupModalSlice } from "./signupModalSlice";
+import { forgotPasswordModalSlice } from "./forgotPasswordModalSlice";
 
 const logger = createLogger({
   collapsed: true,
@@ -16,6 +17,7 @@ export const store = configureStore({
   reducer: {
     loginModal: loginModalSlice,
     signupModal: signupModalSlice.reducer,
+    forgotPasswordModal: forgotPasswordModalSlice.reducer,
     [selectedBookApi.reducerPath]: selectedBookApi.reducer,
     [recBooksApi.reducerPath]: recBooksApi.reducer,
     [sugBooksApi.reducerPath]: sugBooksApi.reducer

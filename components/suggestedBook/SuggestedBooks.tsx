@@ -4,6 +4,7 @@ import { useGetSugBooksQuery } from "@/redux/sugBooksApiSlice";
 import Link from "next/link";
 import styles from "@/components/recBooks/recommendedBooks.module.css";
 import Loading from "@/app/UI/Loading";
+import { CiStar } from "react-icons/ci";
 
 export default function SuggestedBooks() {
   const { data: sugBooksArray, isLoading, error } = useGetSugBooksQuery();
@@ -33,7 +34,7 @@ export default function SuggestedBooks() {
               <div className="bookAuthor">{books.author}</div>
               <div className="bookDescription">{books.subTitle}</div>
               <div className="extraDetails">
-                <div className="bookLength"></div>
+                <div className="bookRatingIcon"><CiStar/></div>
                 <div className="bookRating">{books.averageRating}</div>
               </div>
             </div>

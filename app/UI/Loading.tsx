@@ -10,9 +10,6 @@ export default function Loading() {
             <div className="bookName">
               <div className="title__skeleton"></div>
             </div>
-            <div className="bookAuthor ">
-              <div className="detail__skeleton"></div>
-            </div>
             <div className="bookDescription ">
               <div className="descr__skeleton"></div>
             </div>

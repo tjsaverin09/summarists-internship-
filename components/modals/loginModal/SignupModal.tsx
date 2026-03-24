@@ -106,7 +106,7 @@ export default function SignupModal() {
             </form>
           </div>
           <button
-            className={styles.newAccountBtn}
+            className={styles.modalBottomBtn}
             onClick={() => handleSwitchToLogin()}
           >
             Already have an account?

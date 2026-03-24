@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "./recommendedBooks.module.css";
 import Loading from "@/app/UI/Loading"
+import { CiStar } from "react-icons/ci";
 
 export default function RecommendedBooks() {
   const { data: recBooksArray, isLoading } = useGetRecBooksQuery();

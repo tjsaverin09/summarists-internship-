@@ -11,17 +11,26 @@ import { LuLogOut } from "react-icons/lu";
 import Link from "next/link";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "@/app/firebase/init";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"; 
 
 export default function Sidebar() {
   const [userLoggedIn, setUserLoggedIn] = useState<User | null>(null);
 
   useEffect(() => {
-    const logout = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUserLoggedIn(currentUser);
     });
-    return () => logout();
+    return () => unsubscribe();
   }, []);
+
+  const user = auth.currentUser;
+  if (user) {
+    console.log(user.email, user.uid);
+  } else {
+    console.log("no user")
+  }
+
+
 
   return (
     <div className={styles.sidebar}>
@@ -90,11 +99,9 @@ export default function Sidebar() {
             <div className={styles.optionIcon}>
               <LuLogOut />
             </div>
-            {!userLoggedIn ? (
-              <div className="bottomOptionLabel">Login</div>
-            ) : (
-              <div className="bottomOptionLabel">Logout</div>
-            )}
+              <div className="bottomOptionLabel">
+               {userLoggedIn ? "Logout" : "Login"}
+              </div>
           </button>
         </div>
       </div>

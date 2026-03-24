@@ -123,6 +123,17 @@ For-you
   margin-bottom: 8px;
 }
 
+.extraDetails {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #6b757b;
+}
+
+.bookRating {
+  
+}
+
 /*
 
 Book-Page
@@ -402,32 +413,48 @@ Skeleton
 
 */
 
+[class*="skeleton"] {
+  position: relative;
+  overflow: hidden;
+}
+
+[class*="skeleton"]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
 .skeleton-box {
   width: 100%;
   height: 100%;
-  background-color: red;
+  background-color: #e0e0e0;
   margin: auto;
+
 }
 
 .skeleton__img--test {
-  background-color: hotpink;
+  background-color: #e0e0e0;
   width: 150px;
   height: 200px;
   border-radius: 4px;
-}
-
-.book__image--skeleton {
-  width:  100%;
-  max-width: 100px;
-  height: 100%;
-  max-height: 200px;
-  background-color: red;
+  margin-bottom: 8px;
 }
 
 .title__skeleton {
   max-width: 100px;
-
-  background-color: purple;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
 }
 
 .detail__skeleton {
@@ -435,7 +462,7 @@ Skeleton
   max-width: 80px;
   height: 20px;
   border-radius: 4px;
-  background-color: purple;
+  background-color: #e0e0e0;
 }
 
 .descr__skeleton {
@@ -443,7 +470,18 @@ Skeleton
   max-width: 100x;
   height: 32px;
   border-radius: 4px;
-  background-color: peachpuff
+  background-color: #e0e0e0;
+  margin-bottom: 8px;
+}
+
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 
