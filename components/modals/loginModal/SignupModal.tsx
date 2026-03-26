@@ -59,7 +59,7 @@ export default function SignupModal() {
           onClick={(e) => e.stopPropagation()}
         >
           <div
-            className={styles.closeBtn}
+            className={styles.closeButton}
             onClick={() => dispatch(closeSignupModal())}
           >
             <IoCloseOutline />

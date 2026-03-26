@@ -52,7 +52,7 @@ export default function Sidebar() {
               <div className={styles.topOptionLabel}>For you</div>
             </div>
           </Link>
-          <Link href="/">
+          <Link href="/library">
             <div className={styles.sidebarOption}>
               <div className={styles.optionIcon}>
                 <IoBookmarkOutline />
@@ -61,33 +61,33 @@ export default function Sidebar() {
               <div className={styles.topOptionLabel}>My Library</div>
             </div>
           </Link>
-          <div className={styles.sidebarOption}>
+          <div className={`${styles.sidebarOption} ${styles.noClick}`}>
             <div className={styles.optionIcon}>
               <RiBallPenLine />
             </div>
-            <div className={`${styles.topOptionLabel} ${styles.noClick}`}>
+            <div className={styles.topOptionLabel}>
               Highlights
             </div>
           </div>
-          <div className={styles.sidebarOption}>
+          <div className={`${styles.sidebarOption} ${styles.noClick}`}>
             <div className={styles.optionIcon}>
               <IoMdSearch />
             </div>
-            <div className={`${styles.topOptionLabel} ${styles.noClick}`}>
+            <div className={styles.topOptionLabel}>
               Search
             </div>
           </div>
         </div>
         <div className={styles.sidebarBottom}>
+            <Link href="/settings">
           <div className={styles.sidebarOption}>
             <div className={styles.optionIcon}>
               <GoGear />
             </div>
-            <Link href="/settings">
               <div className="bottomOptionLabel">Settings</div>
-            </Link>
           </div>
-          <div className={styles.sidebarOption}>
+            </Link>
+          <div className={`${styles.sidebarOption} ${styles.noClick}`}>
             <div className={styles.optionIcon}>
               <HiOutlineQuestionMarkCircle />
             </div>

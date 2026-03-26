@@ -11,7 +11,12 @@ import Image from "next/image";
 import styles from "@/components/modals/loginModal/loginModal.module.css";
 import { useRouter } from "next/navigation";
 import { auth, googleProvider } from "@/app/firebase/init";
-import { signInWithPopup, signInWithEmailAndPassword, getAuth, sendPasswordResetEmail } from "firebase/auth";
+import {
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  getAuth,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 import { useState } from "react";
 
 interface RootState {
@@ -39,15 +44,15 @@ export default function LoginModal() {
       // The signed-in user info
       const user = result.user;
       console.log("Logged in as:", user.displayName);
-      
+
       // You can now redirect the user or update your app state
     } catch (error) {
-    if (error instanceof Error) {
-      console.error("Authentication error:", error.message);
-    } else {
-      console.error("Authentication error:", String(error));
+      if (error instanceof Error) {
+        console.error("Authentication error:", error.message);
+      } else {
+        console.error("Authentication error:", String(error));
+      }
     }
-  }
   };
 
   const logIn = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -59,6 +64,9 @@ export default function LoginModal() {
         password,
       );
       console.log(userCredential.user);
+      setEmail("");
+      setPassword("");
+      setError("");
       dispatch(closeModal());
       router.push("/for-you");
     } catch (error: any) {
@@ -68,9 +76,9 @@ export default function LoginModal() {
   };
 
   const handleForgotPassword = () => {
-    dispatch (closeModal());
-    dispatch (openForgotPasswordModal());
-  }
+    dispatch(closeModal());
+    dispatch(openForgotPasswordModal());
+  };
 
   const handleSwitchToSignup = () => {
     dispatch(closeModal());
@@ -90,8 +98,8 @@ export default function LoginModal() {
         </div>
         <div className={styles.modalContent}>
           {error && (
-              <div style={{ color: "red", marginBottom: "10px" }}>{error}</div>
-            )}
+            <div style={{ color: "red", marginBottom: "10px" }}>{error}</div>
+          )}
           <div className={styles.modalTitle}>Log in to Summarist</div>
           <button
             className={`btn ${styles.modalGuestBtn} ${styles.modalBtn}`}
@@ -105,7 +113,10 @@ export default function LoginModal() {
           <div className={styles.modalBreak}>
             <span>or</span>
           </div>
-          <div className={`btn ${styles.modalGoogleBtn} ${styles.modalBtn}`} onClick={handleGoogleLogin}>
+          <div
+            className={`btn ${styles.modalGoogleBtn} ${styles.modalBtn}`}
+            onClick={handleGoogleLogin}
+          >
             <div
               className={`${styles.googleIconWrapper} ${styles.modalBtnIcon}`}
             >
@@ -138,14 +149,22 @@ export default function LoginModal() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            
+
             <button className="btn" type="submit">
               <span>Login</span>
             </button>
           </form>
-        <button className={styles.forgotPassword} onClick={handleForgotPassword}>Forgot your password?</button>
+          <button
+            className={styles.forgotPassword}
+            onClick={handleForgotPassword}
+          >
+            Forgot your password?
+          </button>
         </div>
-        <button className={styles.modalBottomBtn} onClick={handleSwitchToSignup}>
+        <button
+          className={styles.modalBottomBtn}
+          onClick={handleSwitchToSignup}
+        >
           Don't have an account?
         </button>
       </div>

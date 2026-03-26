@@ -42,3 +42,8 @@
     font-size: 24px;
 }
 
+.dropdownContainer {
+    height: 100%;
+    width: 350px;
+}
+

@@ -18,18 +18,19 @@ export default function ForgotPasswordModal() {
     const dispatch = useDispatch();
     const isOpen = useSelector((state: RootState) => state.forgotPasswordModal.isOpen)
     const [email, setEmail] = useState("");
+    const auth = getAuth();
 
-    const resetPassword = async (e: React.FormEvent<HTMLFormatElement>) => {
+    const resetPassword = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-       const auth = getAuth();
-    sendPasswordResetEmail(auth, email)
-        .then(() => {
-            return "Password reset email sent!"
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-        }) 
+        try {
+            await sendPasswordResetEmail(auth, email);
+            setEmail("")
+            alert("Password reset email sent! Return to login!")
+        }
+        catch (error){
+            console.log(error)
+            alert("Failed to send to reset email")
+        }
     }
 
     
