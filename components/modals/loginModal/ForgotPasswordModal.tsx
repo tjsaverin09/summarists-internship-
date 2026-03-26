@@ -6,6 +6,7 @@ import { closeModal, openModal } from "@/redux/loginModalSlice";
 import { openForgotPasswordModal, closeForgotPasswordModal } from "@/redux/forgotPasswordModalSlice";
 import { IoCloseOutline } from "react-icons/io5";
 import { useState } from "react";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 interface RootState {
   forgotPasswordModal: {
@@ -15,12 +16,31 @@ interface RootState {
 
 export default function ForgotPasswordModal() {
     const dispatch = useDispatch();
+    const isOpen = useSelector((state: RootState) => state.forgotPasswordModal.isOpen)
     const [email, setEmail] = useState("");
+
+    const resetPassword = async (e: React.FormEvent<HTMLFormatElement>) => {
+        e.preventDefault();
+       const auth = getAuth();
+    sendPasswordResetEmail(auth, email)
+        .then(() => {
+            return "Password reset email sent!"
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+        }) 
+    }
+
+    
+
 
     const handleSwitchToLogin = () => {
         dispatch(closeForgotPasswordModal());
-        dispatch(openModal())
-    }
+        dispatch(openModal());
+    };
+
+    if (!isOpen) return null;
 
     return (
         <div className={styles.modalOverlay} onClick={() => dispatch(closeForgotPasswordModal())}>
@@ -28,11 +48,11 @@ export default function ForgotPasswordModal() {
                <div className={styles.closeButton} onClick={() => dispatch(closeForgotPasswordModal())}>
                 <IoCloseOutline />
                 </div> 
-                <div className="modalContent">
-                    <div className="modalTitle">
+                <div className={styles.modalContent}>
+                    <div className={styles.modalTitle}>
                     Reset your password
                     </div>
-                    <form onSubmit={null}>
+                    <form onSubmit={resetPassword} className={styles.modalMainForm}>
                         <input
                         placeholder="Email Address" 
                         type="email"
@@ -46,7 +66,7 @@ export default function ForgotPasswordModal() {
                         </button>
                     </form>
                 </div>
-                <button className="modalBottomBtn" onClick={handleSwitchToLogin}>
+                <button className={styles.modalBottomBtn} onClick={handleSwitchToLogin}>
                     Go to login
                 </button>
             </div>

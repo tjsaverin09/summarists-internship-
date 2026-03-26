@@ -24,6 +24,7 @@
     max-width: 400px;
     width: 90%;
     max-height: 90vh;
+    padding-bottom: 56px;
 }
 
 .modalTitle {
@@ -51,11 +52,15 @@
 }
 
 .modalGuestBtn:hover {
-    background-color: #3a589d53
+    background-color: #25396b !important;
 }
 
 .modalGoogleBtn {
     background-color: #4285F4;
+}
+
+.modalGoogleBtn:hover {
+    background-color: #3367d6 !important;
 }
 
 .modalBtnIcon {
@@ -95,11 +100,18 @@
     justify-content: center;
     color: #4285F4;
     font-size: 14px;
-    margin: 0 auto;
+    margin: 8px auto;
     cursor: pointer;
 }
 
+.forgotPassword:hover {
+    color: #000;
+}
+
 .modalBottomBtn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     height: 40px;
     text-align: center;
     background-color: #f1f6f4;
@@ -109,6 +121,10 @@
     font-weight: 300;
     font-size: 16px;
     cursor: pointer;
+}
+
+.modalBottomBtn:hover {
+    background-color: #e1e9e8; 
 }
 
 

@@ -143,9 +143,8 @@ export default function LoginModal() {
               <span>Login</span>
             </button>
           </form>
-        </div>
-
         <button className={styles.forgotPassword} onClick={handleForgotPassword}>Forgot your password?</button>
+        </div>
         <button className={styles.modalBottomBtn} onClick={handleSwitchToSignup}>
           Don't have an account?
         </button>

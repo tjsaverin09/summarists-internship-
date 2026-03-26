@@ -4,6 +4,7 @@ import "./globals.css";
 import ReduxProvider from "@/redux/ReduxProvider";
 import LoginModal from "@/components/modals/loginModal/LoginModal";
 import SignupModal from "@/components/modals/loginModal/SignupModal";
+import ForgotPasswordModal from "@/components/modals/loginModal/ForgotPasswordModal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,7 @@ export default function RootLayout({
           {children}
           <LoginModal />
           <SignupModal />
+          <ForgotPasswordModal />
         </ReduxProvider>
       </body>
     </html>
