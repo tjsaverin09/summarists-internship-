@@ -1,4 +1,4 @@
-export default function Loading() {
+export default function BooksLoading() {
         return (
       <div className="bookList">
         {new Array(7).fill(0).map((_, id) => (

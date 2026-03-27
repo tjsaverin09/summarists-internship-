@@ -4,19 +4,18 @@ import { useGetRecBooksQuery } from "@/redux/recBooksApiSlice";
 import Link from "next/link";
 import { useState } from "react";
 import styles from "./recommendedBooks.module.css";
-import Loading from "@/app/UI/Loading"
+import Loading from "@/app/UI/BooksLoading";
 import { CiStar } from "react-icons/ci";
 
 export default function RecommendedBooks() {
   const { data: recBooksArray, isLoading } = useGetRecBooksQuery();
-
 
   return (
     <div className="recBooks">
       <div className="foryou__header">Recommended For You</div>
       <div className="foryou__subtitle">We think you'll like these</div>
       {isLoading ? (
-        <Loading/>
+        <Loading />
       ) : (
         <div className="bookList">
           {recBooksArray?.map((books) => (

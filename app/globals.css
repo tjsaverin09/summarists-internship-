@@ -508,6 +508,16 @@ Skeleton
   margin-bottom: 8px;
 }
 
+.results__skeleton {
+    width: 320px;
+    height: 96px;
+    background-color: lightgray;
+    margin-bottom: 8px !important;
+    margin-top: 8px !important;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
 
 @keyframes shimmer {
   0% {
