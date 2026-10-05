@@ -31,4 +31,4 @@ export const loginModalSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { openModal, closeModal, toggleModal } = loginModalSlice.actions
 
-export default loginModalSlice.reducer
+export default loginModalSlice;

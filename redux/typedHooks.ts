@@ -1,10 +1,6 @@
-import { useSelector as useReduxSelector, TypedUseSelectorHook } from 'react-redux';
+import { useSelector as useReduxSelector, useDispatch } from 'react-redux';
+import type { RootState, AppDispatch } from './store';
 
-export interface RootState {
-  loginModal: {
-    isOpen: boolean;
-  };
-  // Add other state slices as needed
-}
 
-export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
+export const useAppSelector = useReduxSelector.withTypes<RootState>();

@@ -7,6 +7,8 @@ import { recBooksApi } from "./recBooksApiSlice";
 import { sugBooksApi } from "./sugBooksApiSlice";
 import { signupModalSlice } from "./signupModalSlice";
 import { forgotPasswordModalSlice } from "./forgotPasswordModalSlice";
+import librarySlice from "./librarySlice"
+
 
 const logger = createLogger({
   collapsed: true,
@@ -15,9 +17,10 @@ const logger = createLogger({
 
 export const store = configureStore({
   reducer: {
-    loginModal: loginModalSlice,
+    loginModal: loginModalSlice.reducer,
     signupModal: signupModalSlice.reducer,
     forgotPasswordModal: forgotPasswordModalSlice.reducer,
+    library: librarySlice.reducer,
     [selectedBookApi.reducerPath]: selectedBookApi.reducer,
     [recBooksApi.reducerPath]: recBooksApi.reducer,
     [sugBooksApi.reducerPath]: sugBooksApi.reducer
